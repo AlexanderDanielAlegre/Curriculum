@@ -21,5 +21,27 @@ namespace Curriculum.Services
                 //da.Fill(dt);
             }
         }
+
+        public DataTable LlenarDataGreed(SqlConnection sql)
+        {
+            using (sql)
+            {
+                DataTable dt = new DataTable();
+                DataSet ds = new DataSet();
+                SqlCommand cmd = new SqlCommand();
+                //cmd = new SqlCommand(sql);
+                cmd.CommandText = "Select * from datos_personales";
+
+                sql.Open();
+                //cmd.Connection.Open();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                //cmd.ExecuteNonQuery();
+                //ds.Tables[0]=dt;
+                //da.Fill(ds[0]);
+                da.Fill(dt);
+                return dt;
+            }
+        }
+
     }
 }

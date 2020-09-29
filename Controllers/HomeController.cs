@@ -27,7 +27,7 @@ namespace cv.Controllers
             //domain.CrearConexion();
            var conexion = domain.CrearConexion();
             var metodo = new Curriculum.Services.HomeServices();
-            metodo.ExecuteSP(conexion);
+            metodo.LlenarDataGreed(conexion);
             //domain.ExecuteCommand();
 
             return View();
