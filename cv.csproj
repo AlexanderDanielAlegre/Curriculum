@@ -186,16 +186,6 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Curriculum.Domain\Curriculum.Domain.csproj">
-      <Project>{9ff30714-121a-43d5-80ab-ec39510ecb57}</Project>
-      <Name>Curriculum.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Services\Curriculum.Services.csproj">
-      <Project>{db77e7c0-85eb-4c2c-b036-446df5daeacc}</Project>
-      <Name>Curriculum.Services</Name>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -51,7 +51,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\cv\cv.csproj">
+    <ProjectReference Include="..\cv.csproj">
       <Project>{327414c8-7dac-4c69-9d08-481e5ff416fc}</Project>
       <Name>cv</Name>
     </ProjectReference>

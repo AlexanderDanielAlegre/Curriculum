@@ -6,9 +6,8 @@ namespace Curriculum.Services
 {
     public class HomeServices
     {
-        public void ExecuteSP(SqlConnection sql)
+        public void ExecuteSP(SqlConnection sql )
         {
-            sql.Open();
             using (sql)
             {
                 SqlCommand cmd = new SqlCommand();
