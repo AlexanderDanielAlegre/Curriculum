@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using Curriculum.Domain;
 
 namespace Curriculum.Services
 {
@@ -22,15 +24,15 @@ namespace Curriculum.Services
             }
         }
 
-        public DataTable LlenarDataGreed(SqlConnection sql)
+        public IList<datos_personales> DevolverLista(SqlConnection sql)
         {
             using (sql)
             {
                 DataTable dt = new DataTable();
                 DataSet ds = new DataSet();
-                SqlCommand cmd = new SqlCommand();
+                SqlCommand cmd = new SqlCommand("Select * from datos_personales", sql);
                 //cmd = new SqlCommand(sql);
-                cmd.CommandText = "Select * from datos_personales";
+                //cmd = ("Select * from datos_personales", sql);
 
                 sql.Open();
                 //cmd.Connection.Open();
@@ -39,9 +41,46 @@ namespace Curriculum.Services
                 //ds.Tables[0]=dt;
                 //da.Fill(ds[0]);
                 da.Fill(dt);
+                IList<Curriculum.Domain.datos_personales> lista;
+                lista = new List<datos_personales>();
+
+                foreach (DataRow dr  in dt.Rows)
+                {
+
+                    datos_personales dp = new datos_personales();
+                    dp.id = Convert.ToInt32(dr["id"]);
+                    dp.Nombre = dr["Nombre"].ToString();
+                    dp.Apellido = Convert.ToString(dr["Apellido"]);
+                    dp.dni = Convert.ToInt32(dr["Dni"]);
+
+                    lista.Add(dp);
+                }
+
+                return lista;
+               // IList<Curriculum.Domain.datos_personales> lista = dt.;
+
+                //return dt;
+            }
+        }
+
+        public DataTable LlenarDataGreed(SqlConnection sql)
+        {
+            using (sql)
+            {
+                DataTable dt = new DataTable();
+                DataSet ds = new DataSet();
+                SqlCommand cmd = new SqlCommand("Select * from datos_personales", sql);
+
+                sql.Open();
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+                da.Fill(dt);
+
                 return dt;
             }
         }
+
 
     }
 }
